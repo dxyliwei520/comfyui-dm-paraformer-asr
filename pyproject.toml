@@ -1,0 +1,31 @@
+[project]
+name = "dm-paraformer-asr"
+description = "ComfyUI nodes: offline Chinese speech-to-text (sherpa-onnx + Paraformer-zh-small, pure CPU, no network, no VRAM) + payment-amount extraction. 离线中文语音转文字 + 收款金额抽取。"
+version = "1.0.0"
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.10"
+# ⚠️ 必须锁 1.10.46：2.0.x / 1.12.x / 1.13.x 的 Windows 轮子内置 ORT 1.17.1，
+# 加载 paraformer-zh-small 会报
+#   "The requested API version [24/28] is not available, only API versions [1, 17] ..."
+# 实测 1.10.46 正常（3.76 秒音频 0.03 秒，识别「一点二八元」= 1.28 分毫不差）。
+dependencies = ["sherpa-onnx==1.10.46"]
+keywords = ["comfyui", "asr", "speech-to-text", "paraformer", "sherpa-onnx", "offline", "chinese", "cpu"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Repository = "https://github.com/dxyliwei520/comfyui-dm-paraformer-asr"
+Homepage = "https://github.com/dxyliwei520/comfyui-dm-paraformer-asr"
+Issues = "https://github.com/dxyliwei520/comfyui-dm-paraformer-asr/issues"
+
+[tool.comfy]
+# ⚠️ 发布到官方 Registry（registry.comfy.org）前必须填：
+#   1) https://registry.comfy.org 用 GitHub 登录 → 拿到 PublisherId
+#   2) 填到下面，再 `comfy node publish`
+PublisherId = "REPLACE_WITH_YOUR_PUBLISHER_ID"
+DisplayName = "DM Paraformer ASR (离线中文语音转文字)"
+Icon = ""

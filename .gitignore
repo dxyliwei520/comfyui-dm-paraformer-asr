@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+# 模型（78 MB，不进仓库；用自动下载或手动放）
+models/
+# 本地测试产物
+*.log
+test_*.wav

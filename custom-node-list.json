@@ -1,0 +1,16 @@
+{
+  "custom_nodes": [
+    {
+      "author": "dxyliwei520",
+      "title": "DM Paraformer ASR (离线中文语音转文字 · 不占显存)",
+      "reference": "https://github.com/dxyliwei520/comfyui-dm-paraformer-asr",
+      "files": [
+        "https://github.com/dxyliwei520/comfyui-dm-paraformer-asr/archive/refs/heads/main.zip"
+      ],
+      "install_type": "git-clone",
+      "description": "离线中文语音转文字：sherpa-onnx + Paraformer-zh-small（78MB int8），纯 CPU、不联网、不占显存，3~4 秒音频约 0.03~0.1 秒。附带收款金额抽取节点（中文数字 1.28 不会听成 1.8）。模型自动从 hf-mirror 下载。",
+      "version": "1.0.0",
+      "nodename_pattern": "^DMASR"
+    }
+  ]
+}

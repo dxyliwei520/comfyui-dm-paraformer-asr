@@ -1,0 +1,26 @@
+{
+  "_comment": "API 格式（可直接 POST 到 /prompt）。用法：把 dm_asr_test.wav 放进 ComfyUI/input/，然后 curl -H 'Content-Type: application/json' --data-binary @api_audio_to_amount.json http://127.0.0.1:8189/prompt",
+  "prompt": {
+    "1": {
+      "class_type": "LoadAudio",
+      "inputs": { "audio": "dm_asr_test.wav" }
+    },
+    "2": {
+      "class_type": "DMASRTranscribe",
+      "inputs": {
+        "audio": ["1", 0],
+        "num_threads": 2,
+        "max_chunk_sec": 25.0,
+        "keep_spaces": false
+      }
+    },
+    "3": {
+      "class_type": "DMASRPayAmount",
+      "inputs": {
+        "text": ["2", 0],
+        "loose": true,
+        "extra_keywords": ""
+      }
+    }
+  }
+}
