@@ -90,3 +90,31 @@ Registry 的发布凭据绑在 **你的 GitHub 账号**上，且**只能在网�
 3. 用 `examples/api_audio_to_amount.json` 在 8189 上跑一遍（判据：`amount=1.28 cents=128`）；
 4. `git tag v1.x.y && git push --tags`；
 5. 需要上 Registry 的再跑 `comfy node publish --token <API Key> --changelog "..."`。
+
+---
+
+## 六、✅ 已发布（2026-11-08）
+
+| 项 | 值 |
+|---|---|
+| Registry 节点 ID | **`dm-paraformer-asr`** |
+| Registry 页面 | https://registry.comfy.org/nodes/dm-paraformer-asr |
+| Publisher | **DM Studio**（id `dxyliwei520`）|
+| 版本 | **1.0.0**（`NodeVersionStatusPending` —— 新 Publisher 首发会先挂起审核，通过后 Manager 里可搜到）|
+| 包下载地址 | `https://cdn.comfy.org/dxyliwei520/dm-paraformer-asr/1.0.0/node.zip` |
+
+### 发新版的固定动作（下次照抄，不用再问人）
+
+```powershell
+# 1) 改 pyproject.toml 的 version（如 1.0.1）
+# 2) 提交推送
+cd F:\dm-publish\comfyui-dm-paraformer-asr
+git add -A; git commit -m "feat: ..."; git push origin main; git tag v1.0.1; git push --tags
+# 3) 发布（token 在 C:\Users\liwei\.github\IDkey.txt 里，pat- 开头那串）
+$env:PYTHONUTF8='1'          # ⚠️ 必须设：不然 comfy-cli 用 GBK 读 pyproject 会报 codec 错
+& F:\dm-publish\.venv-comfy\Scripts\comfy.exe node publish --token <pat-...> --changelog "改了什么"
+```
+
+**两个坑（都踩过）**：
+1. **不设 `PYTHONUTF8=1`** → `'gbk' codec can't decode byte 0xad`（读 UTF-8 的 pyproject 失败）。
+2. **上传超时 ≠ 失败**：报 `Read timed out` 时**先去查** `https://api.comfy.org/nodes/dm-paraformer-asr/versions`；如果版本已在，就是**已经成功**了，别重复重试（再试只会报 `The node version already exists`）。
