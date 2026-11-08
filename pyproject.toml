@@ -26,6 +26,6 @@ Issues = "https://github.com/dxyliwei520/comfyui-dm-paraformer-asr/issues"
 # ⚠️ 发布到官方 Registry（registry.comfy.org）前必须填：
 #   1) https://registry.comfy.org 用 GitHub 登录 → 拿到 PublisherId
 #   2) 填到下面，再 `comfy node publish`
-PublisherId = "REPLACE_WITH_YOUR_PUBLISHER_ID"
+PublisherId = "dxyliwei520"
 DisplayName = "DM Paraformer ASR (离线中文语音转文字)"
 Icon = ""
